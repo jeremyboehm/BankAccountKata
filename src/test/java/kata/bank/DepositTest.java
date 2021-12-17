@@ -8,11 +8,11 @@ public class DepositTest {
     @Test
     public void should_increase_the_account_balance_from_3_to_5_when_the_deposit_is_2() {
 
-        Account account = new Account(3);
-        int amount = 2;
+        Account account = new Account(new Amount(3));
+        Amount amount = new Amount(2);
 
-        int updatedBalance = account.deposit(amount);
+        Amount updatedBalance = account.deposit(amount);
 
-        Assertions.assertThat(updatedBalance).isEqualTo(5);
+        Assertions.assertThat(updatedBalance).isEqualTo(new Amount(5));
     }
 }

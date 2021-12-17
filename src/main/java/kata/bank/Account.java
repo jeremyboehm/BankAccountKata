@@ -2,13 +2,13 @@ package kata.bank;
 
 public class Account {
 
-    private final int balance;
+    private final Amount balance;
 
-    public Account(int balance) {
+    public Account(Amount balance) {
         this.balance = balance;
     }
 
-    public int deposit(int amount) {
-        return this.balance + amount;
+    public Amount deposit(Amount amount) {
+        return balance.add(amount);
     }
 }
