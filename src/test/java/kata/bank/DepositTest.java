@@ -56,4 +56,15 @@ public class DepositTest {
 
         Assertions.assertThat(updatedBalance).isEqualTo(3);
     }
+
+    @Test
+    public void should_increase_the_account_balance_from_3_to_4_when_the_deposit_is_1() {
+
+        int balance = 3;
+        int amount = 1;
+
+        int updatedBalance = Account.deposit(balance, amount);
+
+        Assertions.assertThat(updatedBalance).isEqualTo(4);
+    }
 }
