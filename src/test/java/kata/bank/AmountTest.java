@@ -14,4 +14,11 @@ public class AmountTest {
 
         Assertions.assertThat(result).isEqualTo(Amount.of(5));
     }
+
+    @Test
+    public void negative_amount_not_allowed() {
+        Assertions.assertThatThrownBy(() -> Amount.of(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Negative amount");
+    }
 }

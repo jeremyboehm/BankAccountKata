@@ -10,6 +10,11 @@ public class Amount {
     }
 
     public static Amount of(int value) {
+
+        if (value < 0) {
+            throw new IllegalArgumentException("Negative amount");
+        }
+
         return new Amount(value);
     }
 
