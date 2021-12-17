@@ -5,13 +5,16 @@ import java.util.Objects;
 public class Amount {
     private final int value;
 
-    public Amount(int value) {
-
+    private Amount(int value) {
         this.value = value;
     }
 
+    public static Amount of(int value) {
+        return new Amount(value);
+    }
+
     public Amount add(Amount amount) {
-        return new Amount(value + amount.value);
+        return of(value + amount.value);
     }
 
     @Override
