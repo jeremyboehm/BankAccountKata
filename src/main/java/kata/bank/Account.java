@@ -2,7 +2,13 @@ package kata.bank;
 
 public class Account {
 
-    public static int deposit(int balance, int amount) {
-        return balance + amount;
+    private final int balance;
+
+    public Account(int balance) {
+        this.balance = balance;
+    }
+
+    public int deposit(int amount) {
+        return this.balance + amount;
     }
 }
