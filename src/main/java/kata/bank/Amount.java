@@ -23,6 +23,10 @@ public class Amount {
     }
 
     public Amount subtract(Amount amount) {
+        if (amount.value > value) {
+            throw new IllegalArgumentException("Withdrawal amount must be greater than balance amount");
+        }
+
         return of(value - amount.value);
     }
 

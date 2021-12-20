@@ -31,4 +31,14 @@ public class AmountTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Negative amount");
     }
+
+    @Test
+    public void withdrawal_amount_must_be_greater_than_balance_amount() {
+        Amount amount = Amount.of(10);
+        Amount givenAmount = Amount.of(100);
+
+        Assertions.assertThatThrownBy(() -> amount.subtract(givenAmount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Withdrawal amount must be greater than balance amount");
+    }
 }
