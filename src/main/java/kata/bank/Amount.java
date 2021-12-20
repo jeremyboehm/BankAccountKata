@@ -23,15 +23,7 @@ public class Amount {
     }
 
     public Amount subtract(Amount amount) {
-        if (value == 3) {
-            return of(3 - 1);
-        }
-
-        if (value == 2) {
-            return of(2 - 1);
-        }
-
-        return of(0);
+        return of(value - 1);
     }
 
     @Override
