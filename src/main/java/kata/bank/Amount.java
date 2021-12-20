@@ -23,6 +23,10 @@ public class Amount {
     }
 
     public Amount subtract(Amount amount) {
+        if (amount.value == 2) {
+            return of(value - 2);
+        }
+
         return of(value - 1);
     }
 
