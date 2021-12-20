@@ -15,4 +15,8 @@ public class Account {
     public Amount deposit(Amount amount) {
         return balance.add(amount);
     }
+
+    public Amount withdraw(Amount amount) {
+        return balance.subtract(amount);
+    }
 }

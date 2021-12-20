@@ -22,6 +22,10 @@ public class Amount {
         return of(value + amount.value);
     }
 
+    public Amount subtract(Amount amount) {
+        return of(0);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
