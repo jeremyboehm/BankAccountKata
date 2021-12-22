@@ -19,4 +19,8 @@ public class Account {
     public Amount withdraw(Amount amount) {
         return balance.subtract(amount);
     }
+
+    public Operations history() {
+        throw new UnsupportedOperationException();
+    }
 }
