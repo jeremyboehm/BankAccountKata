@@ -8,17 +8,23 @@ public class Operation {
     private final OperationType operationType;
     private final LocalDateTime date;
     private final Amount givenAmount;
-    private final Amount balance;
 
-    public Operation(OperationType operationType, LocalDateTime date, Amount givenAmount, Amount balance) {
+    public Operation(OperationType operationType, LocalDateTime date, Amount givenAmount) {
         this.operationType = operationType;
         this.date = date;
         this.givenAmount = givenAmount;
-        this.balance = balance;
     }
 
-    public static Operation of(OperationType operationType, LocalDateTime date, Amount givenAmount, Amount balance) {
-        return new Operation(operationType, date, givenAmount, balance);
+    public static Operation of(OperationType operationType, LocalDateTime date, Amount givenAmount) {
+        return new Operation(operationType, date, givenAmount);
+    }
+
+    public OperationType getType() {
+        return operationType;
+    }
+
+    public Amount getAmount() {
+        return givenAmount;
     }
 
     @Override
@@ -28,12 +34,11 @@ public class Operation {
         Operation operation = (Operation) o;
         return operationType == operation.operationType &&
                 Objects.equals(date, operation.date) &&
-                Objects.equals(givenAmount, operation.givenAmount) &&
-                Objects.equals(balance, operation.balance);
+                Objects.equals(givenAmount, operation.givenAmount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(operationType, date, givenAmount, balance);
+        return Objects.hash(operationType, date, givenAmount);
     }
 }
