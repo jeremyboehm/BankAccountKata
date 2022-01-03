@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Account {
 
-    private final Amount balance;
+    private Amount balance;
     private final Clock clock;
     private final Operations operations;
 
@@ -21,15 +21,21 @@ public class Account {
 
     public Amount deposit(Amount amount) {
         operations.add(OperationType.DEPOSIT, clock.getTime(), amount);
-        return balance.add(amount);
+        balance = balance.add(amount);
+        return balance;
     }
 
     public Amount withdraw(Amount amount) {
         operations.add(OperationType.WITHDRAW, clock.getTime(), amount);
-        return balance.subtract(amount);
+        balance = balance.subtract(amount);
+        return balance;
     }
 
     public List<Statement> history() {
         return operations.show();
+    }
+
+    public List<String> history2() {
+        return operations.show2();
     }
 }

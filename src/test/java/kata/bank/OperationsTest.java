@@ -46,4 +46,23 @@ public class OperationsTest {
                         Statement.of(Operation.of(OperationType.WITHDRAW, DEFAULT_TIME, Amount.of(250)), Amount.of(650))
                 ));
     }
+
+    @Test
+    public void should_show_operations_with_calculated_balance2() {
+        Operations operations = new Operations();
+
+        operations.add(OperationType.DEPOSIT, DEFAULT_TIME, Amount.of(300));
+        operations.add(OperationType.DEPOSIT, DEFAULT_TIME, Amount.of(500));
+        operations.add(OperationType.WITHDRAW, DEFAULT_TIME, Amount.of(250));
+
+        List<String> result = operations.show2();
+
+        Assertions.assertThat(result).hasSize(3);
+        Assertions.assertThat(result)
+                .isEqualTo(Arrays.asList(
+                        "DEPOSIT, 300, " + DEFAULT_TIME + ", 300",
+                        "DEPOSIT, 500, " + DEFAULT_TIME + ", 800",
+                        "WITHDRAW, 250, " + DEFAULT_TIME + ", 550"
+                        ));
+    }
 }

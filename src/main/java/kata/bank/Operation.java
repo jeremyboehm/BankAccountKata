@@ -27,6 +27,10 @@ public class Operation {
         return givenAmount;
     }
 
+    public LocalDateTime getDate() {
+        return date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

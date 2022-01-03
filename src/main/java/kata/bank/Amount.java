@@ -30,6 +30,10 @@ public class Amount {
         return of(value - amount.value);
     }
 
+    public int getValue() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
