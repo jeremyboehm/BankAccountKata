@@ -3,27 +3,28 @@ package kata.bank;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static kata.bank.ClockMock.DEFAULT_TIME;
+
 public class AccountTest {
 
     private final Clock clock = ClockMock.withDefaultTime();
 
     @Test
-    public void should_increase_balance_when_deposit() {
-        Account account = Account.of(Amount.of(500), clock);
-        Amount givenAmount = Amount.of(100);
+    public void should_show_operations_history() {
+        Account account = Account.of(clock);
 
-        Amount result = account.deposit(givenAmount);
+        account.deposit(Amount.of(500));
+        account.withdraw(Amount.of(100));
 
-        Assertions.assertThat(result).isEqualTo(Amount.of(600));
-    }
+        List<String> result = account.history();
 
-    @Test
-    public void should_decrease_balance_when_withdraw() {
-        Account account = Account.of(Amount.of(500), clock);
-        Amount givenAmount = Amount.of(100);
-
-        Amount result = account.withdraw(givenAmount);
-
-        Assertions.assertThat(result).isEqualTo(Amount.of(400));
+        Assertions.assertThat(result).hasSize(2);
+        Assertions.assertThat(result).isEqualTo(Arrays.asList(
+                "DEPOSIT, 500, " + DEFAULT_TIME + ", 500",
+                "WITHDRAW, 100, " + DEFAULT_TIME + ", 400"
+        ));
     }
 }

@@ -14,30 +14,8 @@ public class ShowOperationsAcceptanceTest {
 
     @Test
     public void should_show_operations() {
-        Amount initBalance = Amount.of(500);
-        Account account = Account.of(initBalance, clock);
-
-        account.deposit(Amount.of(300));
-        account.deposit(Amount.of(50));
-        account.withdraw(Amount.of(100));
-        account.deposit(Amount.of(20));
-        account.withdraw(Amount.of(50));
-
-        List<Statement> statements = account.history();
-
-        Assertions.assertThat(statements).isEqualTo(Arrays.asList(
-                        Statement.of(Operation.of(OperationType.DEPOSIT, DEFAULT_TIME, Amount.of(300)), Amount.of(500)),
-                        Statement.of(Operation.of(OperationType.DEPOSIT, DEFAULT_TIME, Amount.of(50)), Amount.of(800)),
-                        Statement.of(Operation.of(OperationType.WITHDRAW, DEFAULT_TIME, Amount.of(100)), Amount.of(850)),
-                        Statement.of(Operation.of(OperationType.DEPOSIT, DEFAULT_TIME, Amount.of(20)), Amount.of(750)),
-                        Statement.of(Operation.of(OperationType.WITHDRAW, DEFAULT_TIME, Amount.of(50)), Amount.of(770))
-                )
-        );
-    }
-    @Test
-    public void should_show_operations2() {
         Amount initBalance = Amount.of(0);
-        Account account = Account.of(initBalance, clock);
+        Account account = Account.of(clock);
 
         account.deposit(Amount.of(300));
         account.deposit(Amount.of(50));
@@ -45,7 +23,7 @@ public class ShowOperationsAcceptanceTest {
         account.deposit(Amount.of(20));
         account.withdraw(Amount.of(50));
 
-        List<String> result = account.history2();
+        List<String> result = account.history();
 
         Assertions.assertThat(result).hasSize(5);
         Assertions.assertThat(result).isEqualTo(Arrays.asList(
